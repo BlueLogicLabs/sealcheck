@@ -44,8 +44,8 @@ func main() {
 					if err != nil {
 						return errors.Wrap(err, "validation failed")
 					}
-					color.Green("Validation OK")
 					cert := svc.Certificate
+					color.Green("Validation OK. Certificate issued at %s.", cert.NotBefore.String())
 
 					if c.Bool("print-cert") {
 						certInfo, err := certinfo.CertificateText(cert)

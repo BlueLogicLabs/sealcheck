@@ -119,5 +119,20 @@ SELECT certificate_id, certificate FROM (
 	}
 
 	s.Certificate = cert
+
+	foundDomain := false
+	for _, name := range cert.DNSNames {
+		if name == proof.Domain {
+			foundDomain = true
+			break
+		}
+	}
+
+	if !foundDomain {
+		return errors.New("domain not found in certificate")
+	}
+
+	// TODO: Validate certificate
+
 	return nil
 }
