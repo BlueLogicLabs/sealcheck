@@ -10,4 +10,6 @@ Seal works by periodically rolling up Planet's event log into a [Merkle tree](ht
 
 ```
 $ ./sealcheck validate ./seal_proof.json
+SealCheck: ./seal_proof.json
+Validation OK. Certificate issued at 2022-06-01 01:12:23 +0000 UTC.
 ```
