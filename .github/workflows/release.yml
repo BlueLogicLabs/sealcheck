@@ -1,0 +1,28 @@
+on:
+  release:
+    types: [created]
+
+jobs:
+  releases-matrix:
+    name: Release Go Binary
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux, windows, darwin]
+        goarch: ["386", amd64, arm64]
+        exclude:
+          - goarch: "386"
+            goos: darwin
+          - goarch: arm64
+            goos: windows
+    steps:
+    - uses: actions/checkout@v3
+    - uses: wangyoucao577/go-release-action@b3f2406d88324d0d89e7246ce26327b00174c46c
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        goos: ${{ matrix.goos }}
+        goarch: ${{ matrix.goarch }}
+        goversion: "https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz"
+        project_path: "./cmd/sealcheck"
+        binary_name: "sealcheck"
+        extra_files: LICENSE README.md
