@@ -1,8 +1,8 @@
 # sealcheck
 
-CLI utility for checking Planet seal proofs. [Documentation](https://docs.planet.ink/data/seal/)
+CLI utility for checking [Planet](https://planet.ink) seal proofs. [Documentation](https://docs.planet.ink/data/seal/)
 
-*Seal* is a mechanism for **cryptographically proving** that a note is created before a specific time.
+*Seal* is a mechanism for cryptographically proving that a note is created before a specific time.
 
 Seal works by periodically rolling up Planet's event log into a [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree) and submitting the root of the tree to the [Certificate Transparency](https://certificate.transparency.dev/) public ledger by requesting a certificate for the domain name `[root-hash].production.planet-seal.net`. Once the proof for a note is generated, you can download it through the "Seal" entry in the note menu.
 
